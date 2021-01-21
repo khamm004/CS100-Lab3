@@ -1,0 +1,8 @@
+opt
+test
+
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+Makefile
+.CMakeLists.txt.swp
