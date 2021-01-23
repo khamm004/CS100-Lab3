@@ -59,7 +59,7 @@ TEST(DivTest, DivEvaluateZeroDenom) {
     Op* left = new Op(-2);
     Div* test = new Div(left, right);
 
-    EXPECT_EQ(test->evaluate(),0.000000 );
+    EXPECT_EQ(test->evaluate(),- std::numeric_limits<double>::infinity());
 }
 
 TEST(DivTest, DivStringifyZeroDenom) {
