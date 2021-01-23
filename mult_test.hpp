@@ -22,5 +22,22 @@ TEST(MultTest, MultStringifyBothPos) {
     EXPECT_EQ(test->stringify(), "(5.000000*2.000000)");
 }
 
+TEST(MultTest, MultEvaluateBothNeg) {
+    Op* right = new Op(-2);
+    Op* left = new Op(-5);
+    Mult* test = new Mult(left, right);
+
+    EXPECT_EQ(test->evaluate(),10.000000 );
+}
+
+TEST(MultTest, MultStringifyBothNeg) {
+    Op* right = new Op(-2);
+    Op* left = new Op(-5);
+    Mult* test = new Mult(left, right);
+
+    EXPECT_EQ(test->stringify(), "(-5.000000*-2.000000)");
+}
+
+
 #endif //__MULT_TEST_HPP__
 
