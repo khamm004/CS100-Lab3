@@ -54,5 +54,21 @@ TEST(MultTest, MultStringifyDifSigns) {
     EXPECT_EQ(test->stringify(), "(5.000000*-2.000000)");
 }
 
+TEST(MultTest, MultEvaluateZero) {
+    Op* right = new Op(-2);
+    Op* left = new Op(0);
+    Mult* test = new Mult(left, right);
+
+    EXPECT_EQ(test->evaluate(),0.000000 );
+}
+
+TEST(MultTest, MultStringifyZero) {
+    Op* right = new Op(-2);
+    Op* left = new Op(0);
+    Mult* test = new Mult(left, right);
+
+    EXPECT_EQ(test->stringify(), "(0.000000*-2.000000)");
+}
+
 #endif //__MULT_TEST_HPP__
 
