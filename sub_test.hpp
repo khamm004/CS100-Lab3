@@ -33,6 +33,34 @@ TEST(SubTest, SubStringifyNegative) {
     Op* two = new Op(2);
     Sub* test = new Sub(nThree, two);
     EXPECT_EQ(test->stringify(), "(-3.000000-2.000000)");
+}
+TEST(SubTest, SubEvaluatePosNeg) {
+	Op* nThree = new Op(-3);
+	Op* two = new Op(2);
+    Sub* test = new Sub(two, nThree);
+    EXPECT_EQ(test->evaluate(), 5);
+}
+
+TEST(SubTest, SubStringifyPosNeg) {
+	Op* nThree = new Op(-3);
+	Op* two = new Op(2);
+    Sub* test = new Sub(two, nThree);
+    EXPECT_EQ(test->stringify(), "(2.000000--3.000000)");
+}
+
+
+TEST(SubTest, SubEvaluateNegNeg) {
+	Op* nThree = new Op(-3);
+	Op* nTwo = new Op(-2);
+    Sub* test = new Sub(nTwo, nThree);
+    EXPECT_EQ(test->evaluate(), 1);
+}
+
+TEST(SubTest, SubStringifyNegNeg) {
+	Op* nThree = new Op(-3);
+	Op* nTwo = new Op(-2);
+    Sub* test = new Sub(nTwo, nThree);
+    EXPECT_EQ(test->stringify(), "(-2.000000--3.000000)");
 };
 
 //TEST(SubTest, SubEvaluateWMult) {

@@ -33,6 +33,34 @@ TEST(PowTest, PowEvaluateNonZero) {
 	Op* two = new Op(2);
     Pow* test = new Pow(nThree, two);
     EXPECT_EQ(test->stringify(), "(-3.000000**2.000000)");
+}
+TEST(PowTest, PowEvaluatePosNeg) {
+	Op* nThree = new Op(-3);
+	Op* two = new Op(2);
+    Pow* test = new Pow(two, nThree);
+    EXPECT_EQ(test->evaluate(), .125);
+}
+
+TEST(PowTest, PowStringifyPosNeg) {
+	Op* nThree = new Op(-3);
+	Op* two = new Op(2);
+    Pow* test = new Pow(two, nThree);
+    EXPECT_EQ(test->stringify(), "(2.000000**-3.000000)");
+}
+
+
+TEST(PowTest, PowEvaluateNegNeg) {
+	Op* nThree = new Op(-3);
+	Op* nTwo = new Op(-2);
+    Pow* test = new Pow(nTwo, nThree);
+    EXPECT_EQ(test->evaluate(), -.125);
+}
+
+TEST(PowTest, PowStringifyNegNeg) {
+	Op* nThree = new Op(-3);
+	Op* nTwo = new Op(-2);
+    Pow* test = new Pow(nTwo, nThree);
+    EXPECT_EQ(test->stringify(), "(-2.000000**-3.000000)");
 };
 
 //TEST(PowTest, PowEvaluateWMult) {
