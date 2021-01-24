@@ -12,4 +12,4 @@ class Op : public Base {
         virtual std::string stringify() { return std::to_string(val); }
 };
 
-#endif //__OP_HPP__
+#endif //__OP_HPP___
