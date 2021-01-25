@@ -4,6 +4,8 @@
 #include "gtest/gtest.h"
 using namespace std;
 
+#include "mult.hpp"
+#include "div.hpp"
 #include "add.hpp"
 #include "op.hpp"
 
@@ -62,25 +64,33 @@ TEST(AddTest, AddStringifyNegNeg) {
 	Op* nTwo = new Op(-2);
     Add* test = new Add(nTwo, nThree);
     EXPECT_EQ(test->stringify(), "(-2.000000+-3.000000)");
+}
+
+TEST(AddTest, AddEvaluateWMult) {
+    Op* three = new Op(3);
+    Op* two = new Op(2);
+    Op* five = new Op(5);
+    Mult* A = new Mult(three, two);
+    Add* test = new Add(A, five);
+    EXPECT_EQ(test->evaluate(), 11);
+}
+
+TEST(AddTest, MultEvaluateWAdd) {
+	Op* three = new Op(3);
+	Op* two = new Op(2);
+	Op* five = new Op(5);
+	Add* A = new Add(three, two);
+    Mult* test = new Mult(A, five);
+    EXPECT_EQ(test->evaluate(), 25);
+}
+
+TEST(AddTest, AddStringifyWMult) {
+    Op* three = new Op(3);
+    Op* two = new Op(2);
+    Op* five = new Op(5);
+    Mult* A = new Mult(three, two);
+    Add* test = new Add(A, five);
+    EXPECT_EQ(test->stringify(), "((3.000000*2.000000)+5.000000)");
 };
-
-//TEST(AddTest, AddEvaluateWMult) {
-//    Op* three = new Op(3);
-//    Op* two = new Op(2);
-//    Op* five = new Op(5)
-//    Mult* A = new Mult(three, two)
-//    Add* test = new Add(A, five);
-//    EXPECT_EQ(test->evaluate(), 11);
-//}
-//
-//TEST(AddTest, AddStringifyWMult) {
-//    Op* three = new Op(3);
-//    Op* two = new Op(2);
-//    Op* five = new Op(5)
-//    Mult* A = new Mult(three, two)
-//    Add* test = new Add(A, five);
-//    EXPECT_EQ(test->evaluate(), "((3.000000*2.000000)+5.000000)");
-//}
-
 
 #endif
